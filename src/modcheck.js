@@ -61,9 +61,7 @@ export default class Modcheck {
       weightedAccount[i] = parseInt(account[i]) * parseInt(this.weight[i]);
     }
 
-    console.log(weightedAccount);
     weightedAccount = weightedAccount.join('').split('');
-    console.log(weightedAccount);
 
     let sum = weightedAccount.reduce((a, b) => parseInt(a) + parseInt(b));
 
