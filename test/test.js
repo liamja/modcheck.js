@@ -51,13 +51,23 @@ describe('Modcheck', function () {
         assert.isFalse(modcheck.check());
       });
 
-      it('should be a pass for 66374958 / 08-99-99', function () {
+      it('should be a pass for 66374958 / 08-99-99 using the Mod10 algorithm', function () {
         let modcheck = new Modcheck('66374958', '08-99-99');
         assert.isTrue(modcheck.check());
       });
 
-      it('should be a fail for 66374959 / 08-99-99', function () {
+      it('should be a fail for 66374959 / 08-99-99 using the Mod10 algorithm', function () {
         let modcheck = new Modcheck('66374959', '08-99-99');
+        assert.isFalse(modcheck.check());
+      });
+
+      it('should be a pass for 88837491 / 10-79-99 using the Mod11 algorithm', function () {
+        let modcheck = new Modcheck('88837491', '10-79-99');
+        assert.isTrue(modcheck.check());
+      });
+
+      it('should be a fail for 88837493 / 10-79-99 using the Mod11 algorithm', function () {
+        let modcheck = new Modcheck('88837493', '10-79-99');
         assert.isFalse(modcheck.check());
       });
     });
