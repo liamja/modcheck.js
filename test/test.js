@@ -70,6 +70,11 @@ describe('Modcheck', function () {
         let modcheck = new Modcheck('88837493', '10-79-99');
         assert.isFalse(modcheck.check());
       });
+
+      it('should be a pass for 63748472 / 20-29-59 using the Mod11 and double alternate algorithms.', function () {
+        let modcheck = new Modcheck('63748472', '20-29-59');
+        assert.isTrue(modcheck.check());
+      });
     });
   });
 

@@ -33,6 +33,9 @@ export default class Modcheck {
       }, '');
 
       switch (check.algorithm) {
+        case 'DBLAL':
+          results.push(this.dblAlCheck());
+          break;
         case 'MOD10':
           results.push(this.mod10Check());
           break;
@@ -44,10 +47,27 @@ export default class Modcheck {
 
     // One fail causes entire check to fail
     let passed = results.reduce(function (prev, cur) {
-      return cur === false ? false : prev;
+      return cur !== true ? false : prev;
     }, true);
 
     return passed;
+  }
+
+  dblAlCheck() {
+    let account = this.sortCode + this.accountNumber;
+    let weightedAccount = [];
+
+    for (let i = 0; i < 14; i++) {
+      weightedAccount[i] = parseInt(account[i]) * parseInt(this.weight[i]);
+    }
+
+    console.log(weightedAccount);
+    weightedAccount = weightedAccount.join('').split('');
+    console.log(weightedAccount);
+
+    let sum = weightedAccount.reduce((a, b) => parseInt(a) + parseInt(b));
+
+    return sum % 10 === 0;
   }
 
   mod10Check() {
