@@ -28,7 +28,7 @@ var Modcheck = require('modcheck');
 var modcheck = new Modcheck('66374958', '08-99-99');
 
 if (modcheck.check()) {
-  console.log('This account number could be potentially be registered to this sort code.');
+  console.log('This account number could potentially be registered to this sort code.');
 } else {
   console.log('This account number could NOT be registered to this sort code.');
 }
