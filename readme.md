@@ -43,5 +43,6 @@ if (modcheck.check()) {
 
 ## Other Implementations
 
-- [Ruby (Hayden Ball)](https://github.com/ball-hayden/uk_account_validator)
-- [C# (Rat Cow Software](https://code.google.com/p/ratcowsoftopensource/source/browse/trunk/ratcowutilities/RatCow.UKBankAccValidator/?r=81)
+- [Ruby (by Baris Balic)](https://github.com/barisbalic/modulus)
+- [Ruby (by Hayden Ball)](https://github.com/ball-hayden/uk_account_validator)
+- [C# (by Rat Cow Software)](https://code.google.com/p/ratcowsoftopensource/source/browse/trunk/ratcowutilities/RatCow.UKBankAccValidator/?r=81)
