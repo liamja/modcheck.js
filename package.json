@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "node_modules/babel/bin/babel-node.js bin/build && node_modules/babel/bin/babel.js src --out-dir build",
+    "test": "node_modules/mocha/bin/mocha --compilers js:babel/register"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "byline": "^4.2.1",
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "through2": "^2.0.0"
+  }
+}

@@ -1,0 +1,4 @@
+# Preserve directory
+# https://stackoverflow.com/a/11579945/451975
+*
+!.gitignore
