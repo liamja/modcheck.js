@@ -1,6 +1,38 @@
 # modcheck.js [![Build Status](https://travis-ci.org/liamja/modcheck.js.svg?branch=master)](https://travis-ci.org/liamja/modcheck.js)
 
-Javascript library to check a UK bank account number against a sort code using [VocaLink's modulus check](https://www.vocalink.com/customer-support/modulus-checking/).
+A Javascript library to check a UK bank account number against a sort code using [VocaLink's modulus check](https://www.vocalink.com/customer-support/modulus-checking/).
+
+
+### :warning: Warning
+
+A passing modulus check **does not** mean that an account number and sort code exists and is registered to an account holder; it merely confirms the possiblity of an account number being valid for a given sort code.
+
+
+## Building
+
+`npm run build`
+
+
+## Testing
+
+`npm test`
+
+
+## Using
+
+Basic usage in a node.js script:
+
+```js
+var Modcheck = require('modcheck');
+
+var modcheck = new Modcheck('66374958', '08-99-99');
+
+if (modcheck.check()) {
+  console.log('This account number could be potentially be registered to this sort code.');
+} else {
+  console.log('This account number could NOT be registered to this sort code.');
+}
+```
 
 
 ## Resources
