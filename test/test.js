@@ -75,6 +75,15 @@ describe('Modcheck', function () {
         let modcheck = new Modcheck('63748472', '20-29-59');
         assert.isTrue(modcheck.check());
       });
+
+      describe('Exception 1', function () {
+        it('should have 27 added to the accumulated total, then pass double alternate modulus check', function () {
+          let modcheck = new Modcheck('64371389', '11-87-65');
+          assert.isTrue(modcheck.check());
+        assert.isTrue(modcheck.dblAlCheck(), 'double alt');
+        });
+      });
+
     });
   });
 

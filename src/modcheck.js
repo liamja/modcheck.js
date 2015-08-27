@@ -5,6 +5,7 @@ export default class Modcheck {
     this.accountNumber = accountNumber;
     this.sortCode = sortCode;
     this.weightTable = weightTable;
+    this.currentCheck = null;
 
     if (typeof this.sortCode === 'string' || this.sortCode instanceof String) {
       this.sortCode = this.sortCode.replace(/-/g, '');
@@ -28,6 +29,8 @@ export default class Modcheck {
     }, this);
 
     checks.forEach(function (check) {
+      this.currentCheck = check;
+
       this.weight = Object.keys(check.weight).reduce(function (prev, cur) {
         return prev + check.weight[cur].toString();
       }, '');
@@ -64,6 +67,11 @@ export default class Modcheck {
     weightedAccount = weightedAccount.join('').split('');
 
     let sum = weightedAccount.reduce((a, b) => parseInt(a) + parseInt(b));
+
+    if (this.currentCheck.exception == 1)
+    {
+      sum += 27;
+    }
 
     return sum % 10 === 0;
   }
