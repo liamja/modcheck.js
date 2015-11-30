@@ -80,7 +80,19 @@ describe('Modcheck', function () {
         it('should have 27 added to the accumulated total, then pass double alternate modulus check', function () {
           let modcheck = new Modcheck('64371389', '11-87-65');
           assert.isTrue(modcheck.check());
-        assert.isTrue(modcheck.dblAlCheck(), 'double alt');
+          assert.isTrue(modcheck.dblAlCheck(), 'double alt');
+        });
+      });
+
+      describe('Exception 3', function () {
+        it('should skip double alternative check if c == 6, then pass', function () {
+          let modcheck = new Modcheck('64671389', '11-87-65');
+          assert.isTrue(modcheck.check());
+        });
+
+        it('should skip double alternative check if c == 9, then pass', function () {
+          let modcheck = new Modcheck('64971389', '11-87-65');
+          assert.isTrue(modcheck.check());
         });
       });
 
