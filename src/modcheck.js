@@ -56,6 +56,10 @@ export default class Modcheck {
   }
 
   dblAlCheck() {
+    if (this.accountNumber[2] == 6 || this.accountNumber[2] == 9) {
+      return true;
+    }
+
     let account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
