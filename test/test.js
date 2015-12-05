@@ -84,6 +84,18 @@ describe('Modcheck', function () {
         });
       });
 
+      describe('Exception 3', function () {
+        it('should skip double alternative check if c == 6, then pass', function () {
+          let modcheck = new Modcheck('73688637', '82-00-00');
+          assert.isTrue(modcheck.check());
+        });
+
+        it('should skip double alternative check if c == 9, then pass', function () {
+          let modcheck = new Modcheck('73988638', '82-79-99');
+          assert.isTrue(modcheck.check());
+        });
+      });
+
     });
   });
 

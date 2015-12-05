@@ -37,7 +37,9 @@ export default class Modcheck {
 
       switch (check.algorithm) {
         case 'DBLAL':
-          results.push(this.dblAlCheck());
+          if (this.currentCheck.exception == 3 && (String(this.accountNumber).charAt(2) != 6 && String(this.accountNumber).charAt(2) != 9)) {
+            results.push(this.dblAlCheck());
+          }
           break;
         case 'MOD10':
           results.push(this.mod10Check());
