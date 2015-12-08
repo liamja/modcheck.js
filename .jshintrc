@@ -1,0 +1,5 @@
+{
+  // "esversion": 6,  // for the next major release of JSHint
+  "esnext": true,
+  "laxcomma": true
+}

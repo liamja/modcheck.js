@@ -13,8 +13,7 @@ export default class Modcheck {
   }
 
   check() {
-    if (parseInt(this.accountNumber) === 0
-      || parseInt(this.sortCode) === 0
+    if (parseInt(this.accountNumber) === 0 || parseInt(this.sortCode) === 0
     ) {
       return false;
     }
@@ -25,7 +24,7 @@ export default class Modcheck {
         , start     = parseInt(check.sortCodeRange.start)
         , end       = parseInt(check.sortCodeRange.end);
 
-      return (sortCode >= start && sortCode <= end)
+      return (sortCode >= start && sortCode <= end);
     }, this);
 
     checks.forEach(function (check) {
