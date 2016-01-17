@@ -1,4 +1,4 @@
-let weightTable = require('./valacdos').table;
+const weightTable = require('./valacdos').table;
 
 export default class Modcheck {
   constructor(accountNumber, sortCode) {
@@ -13,24 +13,23 @@ export default class Modcheck {
   }
 
   check() {
-    if (parseInt(this.accountNumber) === 0 || parseInt(this.sortCode) === 0
-    ) {
+    if (parseInt(this.accountNumber) === 0 || parseInt(this.sortCode) === 0) {
       return false;
     }
 
     let results = [];
-    let checks = this.weightTable.filter(function (check) {
-      let sortCode  = parseInt(this.sortCode)
-        , start     = parseInt(check.sortCodeRange.start)
-        , end       = parseInt(check.sortCodeRange.end);
+    const checks = this.weightTable.filter(function (check) {
+      const sortCode  = parseInt(this.sortCode);
+      const start     = parseInt(check.sortCodeRange.start);
+      const end       = parseInt(check.sortCodeRange.end);
 
       return (sortCode >= start && sortCode <= end);
     }, this);
 
-    checks.forEach(function (check) {
+    checks.forEach((check) => {
       this.currentCheck = check;
 
-      this.weight = Object.keys(check.weight).reduce(function (prev, cur) {
+      this.weight = Object.keys(check.weight).reduce((prev, cur) => {
         return prev + check.weight[cur].toString();
       }, '');
 
@@ -47,10 +46,10 @@ export default class Modcheck {
           results.push(this.mod11Check());
           break;
       }
-    }, this);
+    });
 
     // One fail causes entire check to fail
-    let passed = results.reduce(function (prev, cur) {
+    const passed = results.reduce((prev, cur) => {
       return cur !== true ? false : prev;
     }, true);
 
@@ -58,7 +57,7 @@ export default class Modcheck {
   }
 
   dblAlCheck() {
-    let account = this.sortCode + this.accountNumber;
+    const account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
     for (let i = 0; i < 14; i++) {
@@ -78,7 +77,7 @@ export default class Modcheck {
   }
 
   mod10Check() {
-    let account = this.sortCode + this.accountNumber;
+    const account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
     for (let i = 0; i < 14; i++) {
@@ -91,7 +90,7 @@ export default class Modcheck {
   }
 
   mod11Check() {
-    let account = this.sortCode + this.accountNumber;
+    const account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
     for (let i = 0; i < 14; i++) {
