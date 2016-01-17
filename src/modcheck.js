@@ -77,7 +77,7 @@ export default class Modcheck {
   }
 
   mod10Check() {
-     account = this.sortCode + this.accountNumber;
+    const account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
     for (let i = 0; i < 14; i++) {
