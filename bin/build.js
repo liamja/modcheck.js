@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-let fs = require('fs')
-  , through = require('through2')
-  , byline = require('byline');
+const fs = require('fs');
+const through = require('through2');
+const byline = require('byline');
 
-let input = byline(fs.createReadStream(__dirname+'/../assets/valacdos.txt', {encoding: 'utf8'}))
-  , output = fs.createWriteStream(__dirname+'/../build/valacdos.json', {encoding: 'utf8'});
+const input = byline(fs.createReadStream(__dirname+'/../assets/valacdos.txt', {encoding: 'utf8'}))
+const output = fs.createWriteStream(__dirname+'/../build/valacdos.json', {encoding: 'utf8'});
 
 let table = [];
 
 input
-  .pipe(through.obj(function (chunk, enc, callback) {
-    let fields = chunk.split(/\s+/);
+  .pipe(through.obj((chunk, enc, callback) => {
+    const fields = chunk.split(/\s+/);
 
-    let row = {
+    const row = {
       'sortCodeRange': {
         'start': fields[0],
         'end': fields[1]
@@ -40,9 +40,9 @@ input
 
     callback(null, row);
   }))
-  .on('data', function (row) {
+  .on('data', (row) => {
     table.push(row)
   })
-  .on('end', function () {
+  .on('end', () => {
     output.write(JSON.stringify({table}, null, '  '));
   });
