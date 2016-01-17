@@ -77,14 +77,14 @@ export default class Modcheck {
   }
 
   mod10Check() {
-    const account = this.sortCode + this.accountNumber;
+     account = this.sortCode + this.accountNumber;
     let weightedAccount = [];
 
     for (let i = 0; i < 14; i++) {
       weightedAccount[i] = parseInt(account[i]) * parseInt(this.weight[i]);
     }
 
-    let sum = weightedAccount.reduce((a, b) => parseInt(a) + parseInt(b));
+    let sum = weightedAccount.reduce((prev, curr) => parseInt(prev) + parseInt(curr));
 
     return sum % 10 === 0;
   }
@@ -97,7 +97,7 @@ export default class Modcheck {
       weightedAccount[i] = parseInt(account[i]) * parseInt(this.weight[i]);
     }
 
-    let sum = weightedAccount.reduce((a, b) => parseInt(a) + parseInt(b));
+    let sum = weightedAccount.reduce((prev, curr) => parseInt(prev) + parseInt(curr));
 
     return sum % 11 === 0;
   }
