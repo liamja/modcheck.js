@@ -1,0 +1,12 @@
+{
+  "preset": "airbnb",
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "disallowSpacesInFunctionExpression": null,
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true,
+    "allExcept": [
+      "shorthand"
+    ]
+  }
+}
